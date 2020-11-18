@@ -1,7 +1,7 @@
-Docker MySQL master-slave replication 
+Docker MySQL Group Replication
 ========================
 
-MySQL master-slave replication with using Docker. 
+MySQL group replication with using Docker. 
 
 ## Run
 
@@ -54,13 +54,13 @@ rm -rf ./slave/data/*
 #### Run command inside "mysql_master"
 
 ```
-docker exec mysql_master sh -c 'mysql -u root -p111 -e "SHOW MASTER STATUS \G"'
+docker exec mysql_master sh -c 'SELECT * FROM performance_schema.replication_group_members;"'
 ```
 
 #### Run command inside "mysql_slave"
 
 ```
-docker exec mysql_slave sh -c 'mysql -u root -p111 -e "SHOW SLAVE STATUS \G"'
+docker exec mysql_slave sh -c 'SELECT * FROM performance_schema.replication_group_members;"'
 ```
 
 #### Enter into "mysql_master"
